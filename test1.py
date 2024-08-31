@@ -34,14 +34,14 @@ print(f"Accuracy: {accuracy}")
 print("Classification Report:")
 print(report)
 
+while True:
+    # Function to predict sentiment of a new sentence
+    def predict_sentiment(sentence):
+        sentence_tfidf = vectorizer.transform([sentence])  # Convert sentence to TF-IDF feature
+        prediction = model.predict(sentence_tfidf)         # Predict sentiment
+        return prediction[0]                               # Return the predicted sentiment
 
-# Function to predict sentiment of a new sentence
-def predict_sentiment(sentence):
-    sentence_tfidf = vectorizer.transform([sentence])  # Convert sentence to TF-IDF feature
-    prediction = model.predict(sentence_tfidf)         # Predict sentiment
-    return prediction[0]                               # Return the predicted sentiment
-
-# Example usage
-input_sentence = input()
-predicted_sentiment = predict_sentiment(input_sentence)
-print(f"The predicted sentiment for the sentence '{input_sentence}' is: {predicted_sentiment}")
+    # Example usage
+    input_sentence = input()
+    predicted_sentiment = predict_sentiment(input_sentence)
+    print(f"The predicted sentiment for the sentence '{input_sentence}' is: {predicted_sentiment}")
